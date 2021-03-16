@@ -4,6 +4,9 @@
 const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
 
+const current0El = document.getElementById('current--0');
+const current1El = document.getElementById('current--1');
+
 const diceEl = document.querySelector('.dice');
 
 const btnNew = document.querySelector('.btn--new');
@@ -13,28 +16,33 @@ const btnHold = document.querySelector('.btn--hold');
 //set player scores to zero to start game
 score0El.textContent = 0;
 score1El.textContent = 0;
+
 //hides the die prior to the first roll
 diceEl.classList.add('hidden');
 
+let currentScore = 0;
 
+// rolling die functionality
+btnRoll.addEventListener('click', function() {
+// 1. Generate a random dice roll
+const diceRoll = Math.trunc(Math.random() * 6) + 1;
+console.log(diceRoll);
 
+// 2. Display Dice
+diceEl.classList.remove('hidden');
+diceEl.src = `assets/dice-${diceRoll}.png`;
 
+// 3. Check for rolled 1: if true, switch to next player
+if(diceRoll !== 1) {
+    //Add diceRoll to current score
+    currentScore += diceRoll;
+    current0El.textContent = currentScore; //Change later to active player
 
+} else {
+    //switch to next player
 
+}
 
+});
 
-// const displayRoll = function(diceRoll)
-// {
-//     document.querySelector('diceRoll').value = diceRoll;
-// }
-
-
-// document.querySelector('.btn--roll').addEventListener 
-// ('click', function ( {
-//     const diceRoll = Number(document.querySelector('dice').value);
-
-//     if(diceRoll === true) {
-//         display
-//     }
-// }))
 
