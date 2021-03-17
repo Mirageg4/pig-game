@@ -20,7 +20,13 @@ score1El.textContent = 0;
 //hides the die prior to the first roll
 diceEl.classList.add('hidden');
 
+// scores for player 1 & player 2
+const scores = [0,0];
+
 let currentScore = 0;
+
+// set active player
+let activePlayer = 0;
 
 // rolling die functionality
 btnRoll.addEventListener('click', function() {
@@ -36,10 +42,14 @@ diceEl.src = `assets/dice-${diceRoll}.png`;
 if(diceRoll !== 1) {
     //Add diceRoll to current score
     currentScore += diceRoll;
-    current0El.textContent = currentScore; //Change later to active player
+    document.getElementById(`current--${activePlayer}`).textContent = currentScore;
 
 } else {
     //switch to next player
+        currentScore = 0;
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+        
+    
 
 }
 
